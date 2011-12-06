@@ -7,8 +7,18 @@ public class SendMessage {
     private static Logger LOGGER = Logger.getLogger(SendMessageWithConnectionRetry.class);
 
     public static void main(String args[]) throws IOException, InterruptedException {
-        SMPPMessageGateWay messageGateWay = new SMPPMessageGateWay("localhost", 8085, "pavel", "wpsd");
+        final String smscAddress = "localhost";
+        final int smscPort = 8085;
+        final String userName = "pavel";
+        final String password = "wpsd";
+
+        SMPPMessageGateWay messageGateWay = new SMPPMessageGateWay(smscAddress, smscPort, userName, password);
+
+        messageGateWay.initialize();
         messageGateWay.sendMessage("9980930495", "Trying to send this message.");
-        Thread.sleep(100000);
+
+        Thread.sleep(1000000);
+
+        messageGateWay.close();
     }
 }
