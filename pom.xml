@@ -8,16 +8,136 @@
     <artifactId>smpp-spike</artifactId>
     <version>1.0</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install-pduutils</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <file>${basedir}/lib/pduutils.jar</file>
+                            <repositoryLayout>default</repositoryLayout>
+                            <groupId>org.smslib</groupId>
+                            <artifactId>pduutils</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install-smslib</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <file>${basedir}/lib/smslib-3.5.1.jar</file>
+                            <repositoryLayout>default</repositoryLayout>
+                            <groupId>org.smslib</groupId>
+                            <artifactId>smslib</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install-jsmpp</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <file>${basedir}/lib/jsmpp-2.1.0.jar</file>
+                            <repositoryLayout>default</repositoryLayout>
+                            <groupId>org.jsmpp.own</groupId>
+                            <artifactId>jsmpp</artifactId>
+                            <version>2.1.0</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install-jsmpp-dependencies-slf4j-api</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <file>${basedir}/lib/jsmpp-2.1.0/lib/slf4j-api-1.4.3.jar</file>
+                            <repositoryLayout>default</repositoryLayout>
+                            <groupId>org.slf4j.own</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>1.4.3</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install-jsmpp-dependencies-slf4j-log4j</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <file>${basedir}/lib/jsmpp-2.1.0/lib/slf4j-log4j12-1.4.3.jar</file>
+                            <repositoryLayout>default</repositoryLayout>
+                            <groupId>org.slf4j.own</groupId>
+                            <artifactId>slf4j-log4j12</artifactId>
+                            <version>1.4.3</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.googlecode.jsmpp</groupId>-->
+            <!--<artifactId>jsmpp</artifactId>-->
+            <!--<version>2.0.1-RELEASE</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.googlecode.jsmpp</groupId>
+            <groupId>org.smslib</groupId>
+            <artifactId>smslib</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.smslib</groupId>
+            <artifactId>pduutils</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jsmpp.own</groupId>
             <artifactId>jsmpp</artifactId>
-            <version>2.1.0-RELEASE</version>
+            <version>2.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j.own</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.4.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j.own</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.4.3</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
